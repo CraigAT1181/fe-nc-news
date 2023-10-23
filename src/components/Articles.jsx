@@ -15,12 +15,12 @@ export default function Articles() {
       {articles.map((article) => {
         return (
           <article className="article" key={article.article_id}>
-            <p>{article.title}</p>
-            <p>{article.author}</p>
-            <p>{article.topic}</p>
+            <h2>{article.title}</h2>
+            <p>Written by: {article.author}</p>
+            <p>About: {article.topic}</p>
             <p>{article.created_at}</p>
-            <p>{article.comment_count}</p>
-            <p>{article.votes}</p>
+            <p>Comments: {article.comment_count}</p>
+            <p>Votes: {article.votes}</p>
             <img className="article-image"
               src={article.article_img_url}
               alt={`A cover picture reflecting the topic of ${article.topic}`}
