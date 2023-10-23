@@ -6,9 +6,32 @@
 }
 
 .logged-user {
-display: inline-flex;
 }
 
 #profilepic {
-width: 50px;
+  width: 50px;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  box-shadow: 2px 1px 2px 1px black;
+  margin: 50px;
+  padding: 1rem;
+  text-align: left;
+}
+
+.article-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+}
+
+.article-image {
+  padding-top: 20px;
+}
+
+p {
+  margin: 2px;
 }
