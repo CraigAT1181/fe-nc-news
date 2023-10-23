@@ -1,9 +1,7 @@
 import axios from "axios";
 
-export const fetchArticles = () => {
-  return axios
-    .get(`https://northcoders-project.onrender.com/api/articles`)
-    .then(({ data }) => {
-      return data;
-    });
-};
+const api = axios.create({
+  baseURL: "https://northcoders-project.onrender.com/api",
+});
+
+export default api;
