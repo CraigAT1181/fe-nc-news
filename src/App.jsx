@@ -1,13 +1,31 @@
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Articles from "./components/Articles";
+import Header from "./components/Header";
+import Navigation from "./components/Navigation";
+import Topics from "./components/Topics";
+import Users from "./components/Users";
 
 function App() {
   return (
     <>
       <Header />
-      <NavigationBar />
+      <Navigation />
       <main>
-        <h1>NC News</h1>
-        
+        <Routes>
+          <Route
+            path="/topics"
+            element={<Topics />}
+          />
+          <Route
+            path="/articles"
+            element={<Articles />}
+          />
+          <Route
+            path="/users"
+            element={<Users />}
+          />
+        </Routes>
       </main>
     </>
   );
