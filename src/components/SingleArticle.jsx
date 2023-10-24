@@ -7,6 +7,9 @@ export default function SingleArticle() {
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showComments, setShowComments] = useState(false);
+
+/* ------------------REQUESTING DATA------------------ */
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,6 +34,15 @@ export default function SingleArticle() {
       );
   }, []);
 
+  /* -------------------FUNCTIONS---------------------- */
+
+const handleCommentClick = () => {
+  setShowComments(true);
+}
+
+
+  /* --------------HANDLING LOADING & ERROR---------------- */
+
   if (isLoading) return <p>Loading...</p>;
   if (error)
     return (
@@ -38,6 +50,8 @@ export default function SingleArticle() {
         Error {error.status} {error.message}
       </p>
     );
+
+    /* -----------------RENDERING PAGE-------------------- */
 
   return (
     <section className="single-article">
@@ -49,6 +63,9 @@ export default function SingleArticle() {
         alt={`A cover picture reflecting the topic of ${article.topic}`}
       />
       <p>{article.body}</p>
+      <p id="comment-link">Comments</p>
     </section>
+
+
   );
 }
