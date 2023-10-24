@@ -8,7 +8,7 @@ export default function SingleArticle() {
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [comments, setComments] = useState([]);
+
   const [showComments, setShowComments] = useState(false);
 
   /* -------------------FUNCTIONS---------------------- */
@@ -44,30 +44,6 @@ export default function SingleArticle() {
 
   /* ------------------REQUESTING COMMENTS BY ARTICLE_ID------------------ */
 
-  useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-    api
-      .get(`/articles/${article_id}/comments`)
-      .then(({ data: { comments } }) => {
-        console.log(comments);
-        setIsLoading(false);
-
-        setComments(comments);
-      })
-      .catch(
-        ({
-          response: {
-            data: { msg },
-            status,
-          },
-        }) => {
-          setIsLoading(false);
-          setError({ status, message: msg });
-        }
-      );
-  }, []);
-
   /* --------------HANDLING LOADING & ERROR---------------- */
 
   if (isLoading) return <p>Loading...</p>;
@@ -97,15 +73,13 @@ export default function SingleArticle() {
           onClick={handleCommentClick}>
           Comments
         </p>
-      </section>
 
-      {showComments ? (
-        <>
-          <section className="comments-display">
+        {showComments ? (
+          <>
             <Comments />
-          </section>
-        </>
-      ) : null}
+          </>
+        ) : null}
+      </section>
     </>
   );
 }
