@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Topics from "./components/Topics";
 import Users from "./components/Users";
 import SingleArticle from "./components/SingleArticle";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -14,6 +15,14 @@ function App() {
       <Navigation />
       <main>
         <Routes>
+        <Route
+            path="/"
+            element={<Home />}
+          />
+                  <Route
+            path="/home"
+            element={<Home />}
+          />
           <Route
             path="/topics"
             element={<Topics />}

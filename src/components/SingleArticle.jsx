@@ -46,7 +46,7 @@ export default function SingleArticle() {
       <p>{article.created_at}</p>
       <img className="single-article-image"
         src={article.article_img_url}
-        alt=""
+        alt={`A cover picture reflecting the topic of ${article.topic}`}
       />
       <p>{article.body}</p>
     </section>
