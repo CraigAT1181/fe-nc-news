@@ -21,6 +21,11 @@ main {
   width: 50px;
 }
 
+.search {
+  display: flex;
+  justify-content: center;
+}
+
 .article {
   display: flex;
   flex-direction: column;
@@ -32,10 +37,21 @@ main {
   border-radius: 20px;
 }
 
+.articles {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
 .article-display {
   display: flex;
   flex-wrap: wrap;
-  justify-items: center;
 }
 
 .article-image {
@@ -56,6 +72,6 @@ p {
 }
 
 .single-article-image {
-width: 400px;
-margin: 1rem;
+  width: 400px;
+  margin: 1rem;
 }

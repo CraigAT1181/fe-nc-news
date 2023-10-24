@@ -30,6 +30,10 @@ export default function Articles() {
       );
   }, []);
 
+  function handleSearch(e) {
+    e.preventDefault();
+  }
+
   if (isLoading) return <p>Loading...</p>;
   if (error)
     return (
@@ -40,12 +44,29 @@ export default function Articles() {
 
   return (
     <>
-      <section></section>
+    <main className="articles">
+      <section className="search">
+        <form onSubmit={handleSearch}>
+          <label htmlFor="search-bar">Article Search</label>
+          <input
+            id="search-bar"
+            type="text"
+            placeholder="Enter Article ID or Name"
+          />
+          <button>Search</button>
+        </form>
+      </section>
       <section className="article-display">
         {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} />;
+          return (
+            <ArticleCard
+              key={article.article_id}
+              article={article}
+            />
+          );
         })}
       </section>
+      </main>
     </>
   );
 }
