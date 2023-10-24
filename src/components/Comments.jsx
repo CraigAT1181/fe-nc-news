@@ -15,7 +15,6 @@ export default function Comments() {
     api
       .get(`/articles/${article_id}/comments`)
       .then(({ data: { comments } }) => {
-        console.log(comments);
         setIsLoading(false);
 
         setComments(comments);

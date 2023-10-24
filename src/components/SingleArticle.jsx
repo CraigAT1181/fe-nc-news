@@ -8,13 +8,12 @@ export default function SingleArticle() {
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [showComments, setShowComments] = useState(false);
 
   /* -------------------FUNCTIONS---------------------- */
 
   const handleCommentClick = () => {
-    setShowComments(true);
+    showComments === true ? setShowComments(false) : setShowComments(true);
   };
 
   /* ------------------REQUESTING ARTICLE BY ID------------------ */
@@ -41,8 +40,6 @@ export default function SingleArticle() {
         }
       );
   }, []);
-
-  /* ------------------REQUESTING COMMENTS BY ARTICLE_ID------------------ */
 
   /* --------------HANDLING LOADING & ERROR---------------- */
 

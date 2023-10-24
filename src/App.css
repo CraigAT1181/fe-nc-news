@@ -3,13 +3,14 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  justify-content: center;
   font-family: "Open Sans", cursive;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .logged-user {
