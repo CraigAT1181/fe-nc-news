@@ -1,33 +1,72 @@
 import { useEffect, useState } from "react";
-import { fetchArticles } from "../api/api";
+import api from "../api/api";
+import ArticleCard from "./ArticleCard";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
+  const [search, setSearch] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchArticles().then(({ articles: articles }) => {
-      setArticles(articles);
-    });
+    setIsLoading(true);
+    setError(null);
+    api
+      .get("/articles")
+      .then(({ data: { articles } }) => {
+        setIsLoading(false);
+        setArticles(articles);
+      })
+      .catch(
+        ({
+          response: {
+            data: { msg },
+            status,
+          },
+        }) => {
+          setIsLoading(false);
+          setError({ status, message: msg });
+        }
+      );
   }, []);
 
+  function handleSearch(e) {
+    e.preventDefault();
+  }
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error)
+    return (
+      <p>
+        Error {error.status} {error.message}
+      </p>
+    );
+
   return (
-    <section className="article-display">
-      {articles.map((article) => {
-        return (
-          <article className="article" key={article.article_id}>
-            <h2>{article.title}</h2>
-            <p>Written by: {article.author}</p>
-            <p>About: {article.topic}</p>
-            <p>{article.created_at}</p>
-            <p>Comments: {article.comment_count}</p>
-            <p>Votes: {article.votes}</p>
-            <img className="article-image"
-              src={article.article_img_url}
-              alt={`A cover picture reflecting the topic of ${article.topic}`}
+    <>
+    <main className="articles">
+      <section className="search">
+        <form onSubmit={handleSearch}>
+          <label htmlFor="search-bar">Article Search</label>
+          <input
+            id="search-bar"
+            type="text"
+            placeholder="Enter Article ID or Name"
+          />
+          <button>Search</button>
+        </form>
+      </section>
+      <section className="article-display">
+        {articles.map((article) => {
+          return (
+            <ArticleCard
+              key={article.article_id}
+              article={article}
             />
-          </article>
-        );
-      })}
-    </section>
+          );
+        })}
+      </section>
+      </main>
+    </>
   );
 }
