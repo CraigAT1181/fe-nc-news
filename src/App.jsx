@@ -16,11 +16,11 @@ function App() {
       <Navigation />
       <main>
         <Routes>
-        <Route
+          <Route
             path="/"
             element={<Home />}
           />
-                  <Route
+          <Route
             path="/home"
             element={<Home />}
           />
@@ -40,7 +40,7 @@ function App() {
             path="/articles/:article_id"
             element={<SingleArticle />}
           />
-                    <Route
+          <Route
             path="/articles/:article_id/comments"
             element={<Comments />}
           />
