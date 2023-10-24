@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../api/api";
 import Comments from "./Comments";
+import Votes from "./Votes";
 
 export default function SingleArticle() {
   const { article_id } = useParams();
@@ -9,6 +10,7 @@ export default function SingleArticle() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
+  const [vote, setVote] = useState(0);
 
   /* -------------------FUNCTIONS---------------------- */
 
@@ -25,7 +27,7 @@ export default function SingleArticle() {
       .get(`/articles/${article_id}`)
       .then(({ data: { article } }) => {
         setIsLoading(false);
-
+        setVote(article.votes);
         setArticle(article);
       })
       .catch(
@@ -65,6 +67,11 @@ export default function SingleArticle() {
           alt={`A cover picture reflecting the topic of ${article.topic}`}
         />
         <p>{article.body}</p>
+        <Votes
+          articleVotes={article.votes}
+          vote={vote}
+          setVote={setVote}
+        />
         <p
           id="comment-link"
           onClick={handleCommentClick}>

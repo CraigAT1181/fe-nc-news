@@ -63,7 +63,6 @@ form {
 
 p {
   margin: 2px;
-  display: inline-block;
 }
 
 #comment-link {
@@ -96,7 +95,7 @@ p {
   display: flex;
   flex-direction: column;
   width: auto;
-  
+
   border-radius: 20px;
   padding: 20px;
   margin-top: 50px;
@@ -117,3 +116,23 @@ p {
   margin: 1%;
 }
 
+#vote-count {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+#downvote {
+  margin-left: 20px;
+  box-shadow: 1px 1px 5px 1px black;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+}
+
+#upvote {
+  margin-right: 20px;
+  box-shadow: 1px 1px 5px 1px black;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+}
