@@ -8,6 +8,7 @@ export default function Comments() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [newComment, setNewComment] = useState(null)
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,6 +33,17 @@ export default function Comments() {
       );
   }, []);
 
+  function postComment (e) {
+e.preventDefault()
+setIsLoading(true)
+api.post(`/articles/${article_id}/comments`, {
+    username: "butter_bridge",
+    body: "Great article!",
+}).then((response) => {
+    console.log(response)
+})
+  }
+
   if (isLoading) return <p>Loading...</p>;
   if (error)
     return (
@@ -42,6 +54,7 @@ export default function Comments() {
 
   return (
     <section className="comments-display">
+
       {comments.map((comment) => {
         return (
           <CommentsCard
