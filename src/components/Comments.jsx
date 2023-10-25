@@ -82,6 +82,9 @@ export default function Comments() {
         </form>
 
         {newComment ? "Post successful!" : null}
+        {comments.length === 0
+          ? "No one has posted a comment on this article yet!"
+          : null}
 
         {comments.map((comment) => {
           return (

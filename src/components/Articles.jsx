@@ -44,7 +44,7 @@ export default function Articles() {
 
   return (
     <>
-    <main className="articles">
+  
       <section className="search">
         <form onSubmit={handleSearch}>
           <label htmlFor="search-bar">Article Search</label>
@@ -66,7 +66,7 @@ export default function Articles() {
           );
         })}
       </section>
-      </main>
+  
     </>
   );
 }

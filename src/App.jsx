@@ -39,7 +39,7 @@ function App() {
           <Route
             path="/articles/:article_id"
             element={<SingleArticle />}
-          />
+          />          
         </Routes>
       </main>
     </>
