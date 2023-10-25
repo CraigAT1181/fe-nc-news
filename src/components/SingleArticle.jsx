@@ -10,7 +10,6 @@ export default function SingleArticle() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
-  const [vote, setVote] = useState(0);
 
   /* -------------------FUNCTIONS---------------------- */
 
@@ -27,7 +26,7 @@ export default function SingleArticle() {
       .get(`/articles/${article_id}`)
       .then(({ data: { article } }) => {
         setIsLoading(false);
-        setVote(article.votes);
+
         setArticle(article);
       })
       .catch(
@@ -68,9 +67,8 @@ export default function SingleArticle() {
         />
         <p>{article.body}</p>
         <Votes
+          article_id={article.article_id}
           articleVotes={article.votes}
-          vote={vote}
-          setVote={setVote}
         />
         <p
           id="comment-link"
