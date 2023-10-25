@@ -34,7 +34,7 @@ export default function Articles() {
     e.preventDefault();
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Just a moment...</p>;
   if (error)
     return (
       <p>

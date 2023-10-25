@@ -9,18 +9,11 @@ export default function Votes({ articleVotes, article_id }) {
     e.preventDefault();
     setVote(vote + Number(e.target.value));
 
-    patchVote();
-  }
-
-  function patchVote() {
-
     api
       .patch(`/articles/${article_id}`, {
-        inc_votes: vote,
+        inc_votes: Number(e.target.value),
       })
-      .then(() => {
-        console.log("Patch Successful");
-      })
+
       .catch(
         ({
           response: {
@@ -29,6 +22,7 @@ export default function Votes({ articleVotes, article_id }) {
           },
         }) => {
           setError({ status, message: msg });
+          setVote(0)
         }
       );
   }

@@ -101,6 +101,35 @@ p {
   margin-top: 50px;
 }
 
+#comment-box {
+  
+  border-radius: 50px;
+  height: 75px;
+  
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+#post-comment-button {
+width: 75px;
+border-radius: 20%;
+font-size: 20px;
+border: none;
+box-shadow: 1px 1px 5px 1px black;
+cursor: pointer;
+}
+
+#comment-input {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px black;
+  width: 75%;
+  margin-right: 30px;
+  margin-left: 10px;
+  padding: 4%;
+}
+
 .comment-card {
   display: flex;
   flex-direction: column;
@@ -127,6 +156,7 @@ p {
   font-weight: bold;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }
 
 #upvote {
@@ -135,4 +165,5 @@ p {
   font-weight: bold;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }

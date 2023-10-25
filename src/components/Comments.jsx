@@ -8,7 +8,7 @@ export default function Comments() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [newComment, setNewComment] = useState(null)
+  const [newComment, setNewComment] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -17,7 +17,6 @@ export default function Comments() {
       .get(`/articles/${article_id}/comments`)
       .then(({ data: { comments } }) => {
         setIsLoading(false);
-
         setComments(comments);
       })
       .catch(
@@ -31,20 +30,35 @@ export default function Comments() {
           setError({ status, message: msg });
         }
       );
-  }, []);
+  }, [newComment]);
 
-  function postComment (e) {
-e.preventDefault()
-setIsLoading(true)
-api.post(`/articles/${article_id}/comments`, {
-    username: "butter_bridge",
-    body: "Great article!",
-}).then((response) => {
-    console.log(response)
-})
+  function postComment(e) {
+    e.preventDefault();
+    setIsLoading(true);
+
+    api
+      .post(`/articles/${article_id}/comments`, {
+        username: "jessjelly",
+        body: e.target[0].value,
+      })
+      .then(({ data: { comment } }) => {
+        setIsLoading(false);
+        setNewComment(comment);
+      })
+      .catch(
+        ({
+          response: {
+            data: { msg },
+            status,
+          },
+        }) => {
+          setIsLoading(false);
+          setError({ status, message: msg });
+        }
+      );
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Just a moment...</p>;
   if (error)
     return (
       <p>
@@ -53,16 +67,31 @@ api.post(`/articles/${article_id}/comments`, {
     );
 
   return (
-    <section className="comments-display">
-
-      {comments.map((comment) => {
-        return (
-          <CommentsCard
-            key={comment.comment_id}
-            comment={comment}
+    <>
+      <section className="comments-display">
+        <form
+          onSubmit={postComment}
+          id="comment-box">
+          <label htmlFor="comment-input"></label>
+          <input
+            id="comment-input"
+            type="text"
+            required
           />
-        );
-      })}
-    </section>
+          <button id="post-comment-button">post</button>
+        </form>
+
+        {newComment ? "Post successful!" : null}
+
+        {comments.map((comment) => {
+          return (
+            <CommentsCard
+              key={comment.comment_id}
+              comment={comment}
+            />
+          );
+        })}
+      </section>
+    </>
   );
 }
