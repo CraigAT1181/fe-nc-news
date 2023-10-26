@@ -76,11 +76,7 @@ export default function SingleArticle() {
           Comments
         </p>
 
-        {showComments ? (
-          <>
-            <Comments />
-          </>
-        ) : null}
+        {showComments ? <Comments /> : null}
       </section>
     </>
   );

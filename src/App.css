@@ -13,6 +13,21 @@ main {
   align-items: center;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+h2 {
+  margin-top: 0; 
+}
+
+p {
+  margin: 2px;
+}
+
 .logged-user {
   display: flex;
   flex-direction: column;
@@ -28,41 +43,26 @@ main {
   justify-content: center;
 }
 
+.article-display {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
 .article {
   display: flex;
   flex-direction: column;
   width: 500px;
   box-shadow: 2px 1px 2px 1px black;
-  margin: 50px;
+  margin: 30px;
   padding: 1rem;
   text-align: left;
   border-radius: 20px;
 }
 
-.articles {
-  display: flex;
-  flex-direction: column;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-  margin-top: 2rem;
-}
-
-.article-display {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .article-image {
   padding-top: 20px;
   width: 500px;
-}
-
-p {
-  margin: 2px;
 }
 
 #comment-link {
@@ -166,4 +166,21 @@ cursor: pointer;
   height: 25px;
   width: 25px;
   cursor: pointer;
+}
+
+.topic-display {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.topic {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  box-shadow: 2px 1px 2px 1px black;
+  margin: 30px;
+  padding: 1rem;
+  text-align: left;
+  border-radius: 20px;
 }

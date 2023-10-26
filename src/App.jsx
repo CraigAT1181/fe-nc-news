@@ -7,7 +7,9 @@ import Topics from "./components/Topics";
 import Users from "./components/Users";
 import SingleArticle from "./components/SingleArticle";
 import Home from "./components/Home";
-import Comments from "./components/Comments";
+import SingleTopic from "./components/SingleTopic";
+
+
 
 function App() {
   return (
@@ -39,7 +41,11 @@ function App() {
           <Route
             path="/articles/:article_id"
             element={<SingleArticle />}
-          />
+          />  
+            <Route
+            path="/articles?topic=*"
+            element={<SingleTopic />}
+          /> 
         </Routes>
       </main>
     </>
