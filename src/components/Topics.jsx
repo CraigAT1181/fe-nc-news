@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
-import ArticleCard from "./ArticleCard";
+import SingleTopic from "./SingleTopic";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function Topics() {
   const [topics, setTopics] = useState([]);
   const [articlesByTopic, setArticlesByTopic] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,7 +41,9 @@ export default function Topics() {
       .then(({ data: { articles } }) => {
         setIsLoading(false);
         setArticlesByTopic(articles);
-      })      .catch(
+        navigate(<SingleTopic />)
+      })
+      .catch(
         ({
           response: {
             data: { msg },
@@ -84,10 +89,14 @@ export default function Topics() {
             );
           })}
         </select>
+ 
         <button>Search</button>
+    
       </form>
 
-      <section className="article-display">
+{articlesByTopic ? <SingleTopic articlesByTopic={articlesByTopic} /> : null}
+      
+      {/* <section className="article-display">
         {articlesByTopic.map((article) => {
           return (
             <ArticleCard
@@ -96,7 +105,7 @@ export default function Topics() {
             />
           );
         })}
-      </section>
+      </section> */}
     </>
   );
 }
