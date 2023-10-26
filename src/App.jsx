@@ -41,11 +41,7 @@ function App() {
           <Route
             path="/articles/:article_id"
             element={<SingleArticle />}
-          />  
-            <Route
-            path="/articles?topic=*"
-            element={<SingleTopic />}
-          /> 
+          />
         </Routes>
       </main>
     </>

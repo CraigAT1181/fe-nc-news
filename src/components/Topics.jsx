@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
-import SingleTopic from "./SingleTopic";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Topics() {
   const [topics, setTopics] = useState([]);
-  const [articlesByTopic, setArticlesByTopic] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,24 +33,7 @@ export default function Topics() {
   function searchArticles(e) {
     e.preventDefault();
     setIsLoading(true);
-    api
-      .get(`/articles?topic=${e.target[0].value}`)
-      .then(({ data: { articles } }) => {
-        setIsLoading(false);
-        setArticlesByTopic(articles);
-        navigate(<SingleTopic />)
-      })
-      .catch(
-        ({
-          response: {
-            data: { msg },
-            status,
-          },
-        }) => {
-          setIsLoading(false);
-          setError({ status, message: msg });
-        }
-      );
+    navigate(`/articles?topic=${e.target[0].value}`);
   }
 
   if (isLoading) return <p>Just a moment...</p>;
@@ -89,23 +69,9 @@ export default function Topics() {
             );
           })}
         </select>
- 
-        <button>Search</button>
-    
-      </form>
 
-{articlesByTopic ? <SingleTopic articlesByTopic={articlesByTopic} /> : null}
-      
-      {/* <section className="article-display">
-        {articlesByTopic.map((article) => {
-          return (
-            <ArticleCard
-              key={article.article_id}
-              article={article}
-            />
-          );
-        })}
-      </section> */}
+        <button>Search</button>
+      </form>
     </>
   );
 }

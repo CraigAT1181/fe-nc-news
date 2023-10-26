@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
 import ArticleCard from "./ArticleCard";
+import { useSearchParams } from "react-router-dom";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
-  const [search, setSearch] = useState();
+  const [sortby, setSortby] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setIsLoading(true);
     setError(null);
     api
-      .get("/articles")
+      .get(`/articles?${searchParams.toString()}`)
       .then(({ data: { articles } }) => {
         setIsLoading(false);
         setArticles(articles);
@@ -28,11 +30,11 @@ export default function Articles() {
           setError({ status, message: msg });
         }
       );
-  }, []);
+  }, [searchParams]);
 
-  function handleSearch(e) {
-    e.preventDefault();
-  }
+  // function handleSortby(e) {
+  //   setSortby(e.target.value)
+  // }
 
   if (isLoading) return <p>Just a moment...</p>;
   if (error)
@@ -45,17 +47,28 @@ export default function Articles() {
   return (
     <>
   
-      <section className="search">
-        <form onSubmit={handleSearch}>
-          <label htmlFor="search-bar">Article Search</label>
-          <input
-            id="search-bar"
+      
+        {/* <form onSubmit={handleSortby}>
+      <label htmlFor="sortby">Sort By</label>
+          <select
+          onChange={handleSortby}
             type="text"
-            placeholder="Enter Article ID or Name"
-          />
-          <button>Search</button>
-        </form>
-      </section>
+            id="sortby"
+            defaultValue="choose"
+            required>
+            <option
+              key="placeholder"
+              value="choose"
+              disabled
+              hidden>
+              Choose...
+            </option>
+         <option value="date">Date</option>
+         <option value="comment_count">Comments</option>
+         <option value="vote">Votes</option>
+          </select>
+        </form> */}
+
       <section className="article-display">
         {articles.map((article) => {
           return (
