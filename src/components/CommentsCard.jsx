@@ -5,6 +5,7 @@ export default function CommentCard({ comment }) {
       <p id="comment-text">{comment.body}</p>
       <p id="comment-text">{comment.created_at}</p>
       <p id="comment-text">Votes: {comment.votes}</p>
+      <button id="delete-button">Delete</button>
     </section>
   );
 }

@@ -46,14 +46,14 @@ p {
 .article-display {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 50px;
+  padding-left: 3rem;
 }
 
 .article {
   display: flex;
   flex-direction: column;
   width: 500px;
-  box-shadow: 2px 1px 2px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   margin: 30px;
   padding: 1rem;
   text-align: left;
@@ -68,7 +68,7 @@ p {
 #comment-link {
   margin-top: 50px;
   border-radius: 20px;
-  box-shadow: 1px 1px 5px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   width: 100px;
   font-weight: bold;
 }
@@ -79,7 +79,7 @@ p {
 
 .single-article {
   width: 50%;
-  box-shadow: 1px 1px 5px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   border-radius: 20px;
   padding: 100px;
   padding-bottom: 40px;
@@ -116,14 +116,14 @@ width: 75px;
 border-radius: 20%;
 font-size: 20px;
 border: none;
-box-shadow: 1px 1px 5px 1px black;
+box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
 cursor: pointer;
 }
 
 #comment-input {
   border: none;
   border-radius: 20px;
-  box-shadow: 1px 1px 5px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   width: 75%;
   margin-right: 30px;
   margin-left: 10px;
@@ -135,10 +135,19 @@ cursor: pointer;
   flex-direction: column;
   text-align: left;
   width: auto;
-  box-shadow: 1px 1px 5px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   border-radius: 20px;
   margin: 5%;
   padding: 1rem;
+}
+
+#delete-button {
+  width: 5rem;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  border-radius: 20px;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
 }
 
 #comment-text {
@@ -152,7 +161,7 @@ cursor: pointer;
 
 #downvote {
   margin-right: 20px;
-  box-shadow: 1px 1px 5px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   font-weight: bold;
   height: 25px;
   width: 25px;
@@ -161,7 +170,7 @@ cursor: pointer;
 
 #upvote {
   margin-left: 20px;
-  box-shadow: 1px 1px 5px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   font-weight: bold;
   height: 25px;
   width: 25px;
@@ -178,9 +187,40 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 300px;
-  box-shadow: 2px 1px 2px 1px black;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   margin: 30px;
   padding: 1rem;
   text-align: left;
   border-radius: 20px;
+}
+
+.filter-display {
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  width: 75%;
+  margin-top: 2rem;
+  justify-content: center;
+  
+}
+
+#topic-choice {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+}
+
+#sortby {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+}
+
+#topic-title {
+  margin-top: 2rem;
+  color: rgb(31, 115, 143);
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  padding: 1rem;
 }
