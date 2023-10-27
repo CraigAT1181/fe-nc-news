@@ -85,7 +85,6 @@ a {
   padding-top: 1rem;
   width: 30rem;
   height: 20rem;
-  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
 }
 
 #comment-link-div {
@@ -211,6 +210,7 @@ a {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  background-color: white;
   color: rgb(31, 115, 143);
   height: 1.2rem;
   font-weight: bold;
@@ -223,6 +223,7 @@ a {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  background-color: white;
   color: rgb(31, 115, 143);
   height: 1.2rem;
   font-weight: bold;
@@ -235,6 +236,7 @@ a {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  background-color: white;
   color: rgb(31, 115, 143);
   height: 1.2rem;
   font-weight: bold;

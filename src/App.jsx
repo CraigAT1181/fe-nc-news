@@ -2,10 +2,8 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
-import Navigation from "./components/Navigation";
 import Users from "./components/Users";
 import SingleArticle from "./components/SingleArticle";
-import Home from "./components/Home";
 import CommentCard from "./components/CommentsCard";
 import ErrorHandling from "./components/ErrorHandling";
 
@@ -13,16 +11,15 @@ function App() {
   return (
     <>
       <Header />
-      <Navigation />
       <main>
         <Routes>
           <Route
             path="/"
-            element={<Home />}
+            element={<Articles />}
           />
           <Route
             path="/home"
-            element={<Home />}
+            element={<Articles />}
           />
           <Route
             path="/articles"

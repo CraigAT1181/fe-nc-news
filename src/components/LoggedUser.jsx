@@ -9,7 +9,7 @@ export default function LoggedUser() {
         src={profile}
         alt="A portrait of the user"
       />
-      <h3>Welcome Craig</h3>  
+      <h3>Welcome jessjelly!</h3>  
     </div>
   );
 }
