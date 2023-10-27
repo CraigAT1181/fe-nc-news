@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -46,7 +46,7 @@ p {
 .article-display {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 3rem;
+  justify-content: center;
 }
 
 .article {

@@ -8,7 +8,9 @@ export default function Comments() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [newComment, setNewComment] = useState(null);
+  const [newComment, setNewComment] = useState(false);
+  const [commentPoster, setCommentPoster] = useState(null);
+  const [commentDeleted, setCommentDeleted] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,7 +32,9 @@ export default function Comments() {
           setError({ status, message: msg });
         }
       );
-  }, [newComment]);
+
+    setCommentDeleted(false);
+  }, [newComment, commentDeleted]);
 
   function postComment(e) {
     e.preventDefault();
@@ -43,12 +47,13 @@ export default function Comments() {
       })
       .then(({ data: { comment } }) => {
         setIsLoading(false);
-        setNewComment(comment);
+        setNewComment(true);
+        setCommentPoster(comment.author);
       })
       .catch(
         ({
           response: {
-            data: { msg },
+            type: { msg },
             status,
           },
         }) => {
@@ -81,16 +86,20 @@ export default function Comments() {
           <button id="post-comment-button">post</button>
         </form>
 
-        {newComment ? "Post successful!" : null}
         {comments.length === 0
           ? "No one has posted a comment on this article yet!"
           : null}
+
+        {newComment === true ? "Post successful!" : null}
+        {/* {commentDeleted === true ? "Post successfully Deleted" : null} */}
 
         {comments.map((comment) => {
           return (
             <CommentsCard
               key={comment.comment_id}
               comment={comment}
+              commentPoster={commentPoster}
+              setCommentDeleted={setCommentDeleted}
             />
           );
         })}
