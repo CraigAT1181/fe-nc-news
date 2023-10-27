@@ -118,14 +118,10 @@ export default function Articles() {
 
   function handleSortby(e) {
     setSortby(e.target.value);
-    // console.log(e.target.value);
-    // console.log(searchParams.get(sortby));
   }
 
   function handleOrder(e) {
     setOrder(e.target.value);
-    // console.log(e.target.value);
-    // console.log(searchParams.get(sortby));
   }
 
   if (isLoading) return <p>Just a moment...</p>;
