@@ -229,3 +229,21 @@ cursor: pointer;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   padding: 1rem;
 }
+
+.error-handling {
+  color: rgb(31, 115, 143);
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+#error-message {
+margin: 1rem;
+}
+
+#error-button {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+}

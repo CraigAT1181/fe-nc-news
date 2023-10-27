@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../api/api";
 import Comments from "./Comments";
 import Votes from "./Votes";
+import { Link } from "react-router-dom";
 
 export default function SingleArticle() {
   const { article_id } = useParams();
@@ -28,12 +29,13 @@ export default function SingleArticle() {
       .catch(
         ({
           response: {
-            data: { msg },
             status,
+            data: { message },
           },
         }) => {
           setIsLoading(false);
-          setError({ status, message: msg });
+
+          setError({ status, message: message });
         }
       );
   }, []);
@@ -41,9 +43,14 @@ export default function SingleArticle() {
   if (isLoading) return <p>Loading...</p>;
   if (error)
     return (
-      <p>
-        Error {error.status} {error.message}
-      </p>
+      <section className="error-handling">
+        <p id="error-message">
+          Oops! We've not found what you were looking for...
+        </p>
+        <Link to={`/articles`}>
+          <button id="error-button">Return to Articles</button>
+        </Link>
+      </section>
     );
 
   return (

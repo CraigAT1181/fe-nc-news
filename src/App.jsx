@@ -7,6 +7,7 @@ import Users from "./components/Users";
 import SingleArticle from "./components/SingleArticle";
 import Home from "./components/Home";
 import CommentCard from "./components/CommentsCard";
+import ErrorHandling from "./components/ErrorHandling";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
           <Route
             path="/comments/:comment_id"
             element={<CommentCard />}
+          />
+          <Route
+            path="/*"
+            element={<ErrorHandling />}
           />
         </Routes>
       </main>
