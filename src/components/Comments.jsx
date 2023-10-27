@@ -8,8 +8,7 @@ export default function Comments() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [newComment, setNewComment] = useState(false);
-  const [commentPoster, setCommentPoster] = useState(null);
+  const [newComment, setNewComment] = useState(null);
   const [commentDeleted, setCommentDeleted] = useState(false);
 
   useEffect(() => {
@@ -47,8 +46,7 @@ export default function Comments() {
       })
       .then(({ data: { comment } }) => {
         setIsLoading(false);
-        setNewComment(true);
-        setCommentPoster(comment.author);
+        setNewComment(comment);
       })
       .catch(
         ({
@@ -90,15 +88,13 @@ export default function Comments() {
           ? "No one has posted a comment on this article yet!"
           : null}
 
-        {newComment === true ? "Post successful!" : null}
-        {/* {commentDeleted === true ? "Post successfully Deleted" : null} */}
+        {newComment ? "Post successful!" : null}
 
         {comments.map((comment) => {
           return (
             <CommentsCard
               key={comment.comment_id}
               comment={comment}
-              commentPoster={commentPoster}
               setCommentDeleted={setCommentDeleted}
             />
           );

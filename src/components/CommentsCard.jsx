@@ -2,12 +2,10 @@ import api from "../api/api";
 
 export default function CommentCard({
   comment,
-  commentPoster,
   setCommentDeleted,
 }) {
   const user = comment.author;
   const commentID = comment.comment_id;
-  const poster = commentPoster;
 
   function deleteComment(e) {
     e.preventDefault();
@@ -24,7 +22,7 @@ export default function CommentCard({
       <p id="comment-text">{comment.created_at}</p>
       <p id="comment-text">Votes: {comment.votes}</p>
 
-      {user === poster ? (
+      {user === "jessjelly" ? (
         <button
           onClick={deleteComment}
           id="delete-button">
