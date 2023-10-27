@@ -9,6 +9,7 @@ export default function Comments() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [newComment, setNewComment] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,6 +45,7 @@ export default function Comments() {
       .then(({ data: { comment } }) => {
         setIsLoading(false);
         setNewComment(comment);
+        setUser(comment.author);
       })
       .catch(
         ({
@@ -57,6 +59,8 @@ export default function Comments() {
         }
       );
   }
+
+
 
   if (isLoading) return <p>Just a moment...</p>;
   if (error)
@@ -91,6 +95,7 @@ export default function Comments() {
             <CommentsCard
               key={comment.comment_id}
               comment={comment}
+              user={user}
             />
           );
         })}

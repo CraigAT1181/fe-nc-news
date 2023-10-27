@@ -11,13 +11,9 @@ export default function SingleArticle() {
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
 
-  /* -------------------FUNCTIONS---------------------- */
-
   const handleCommentClick = () => {
     showComments === true ? setShowComments(false) : setShowComments(true);
   };
-
-  /* ------------------REQUESTING ARTICLE BY ID------------------ */
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,8 +38,6 @@ export default function SingleArticle() {
       );
   }, []);
 
-  /* --------------HANDLING LOADING & ERROR---------------- */
-
   if (isLoading) return <p>Loading...</p>;
   if (error)
     return (
@@ -51,8 +45,6 @@ export default function SingleArticle() {
         Error {error.status} {error.message}
       </p>
     );
-
-  /* -----------------RENDERING PAGE-------------------- */
 
   return (
     <>
