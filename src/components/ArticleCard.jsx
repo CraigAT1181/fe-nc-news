@@ -6,6 +6,8 @@ export default function ArticleCard({ article }) {
     color: "black",
   };
 
+  const date = new Date(article.created_at);
+
   return (
     <article
       className="article"
@@ -19,7 +21,7 @@ export default function ArticleCard({ article }) {
       </h2>
       <p>Written by: {article.author}</p>
       <p>About: {article.topic}</p>
-      <p>{article.created_at}</p>
+      <p>{date.toDateString()}</p>
       <p>Comments: {article.comment_count}</p>
       <p>Votes: {article.votes}</p>
       <Link to={`/articles/${article.article_id}`}>

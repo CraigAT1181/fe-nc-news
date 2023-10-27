@@ -1,9 +1,12 @@
 import api from "../api/api";
 
-export default function CommentCard({
-  comment,
-  setCommentDeleted,
-}) {
+export default function CommentCard({ comment, setCommentDeleted }) {
+  const date = new Date(comment.created_at);
+  const time = date.toLocaleString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   const user = comment.author;
   const commentID = comment.comment_id;
 
@@ -19,8 +22,10 @@ export default function CommentCard({
     <section className="comment-card">
       <p id="comment-text">{comment.author}</p>
       <p id="comment-text">{comment.body}</p>
-      <p id="comment-text">{comment.created_at}</p>
       <p id="comment-text">Votes: {comment.votes}</p>
+      <p id="comment-text">
+        {time}, {date.toDateString()}
+      </p>
 
       {user === "jessjelly" ? (
         <button
