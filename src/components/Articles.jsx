@@ -14,7 +14,6 @@ export default function Articles() {
   const [order, setOrder] = useState("desc");
 
   useEffect(() => {
-    // setSearchParams({sortby: sortby, order: order})
     setIsLoading(true);
     setError(null);
     api
@@ -24,11 +23,15 @@ export default function Articles() {
 
         if (sortby === "votes") {
           articles.sort((a, b) => {
-            if (a.votes < b.votes) {
+            if (a.votes < b.votes && order === "asc") {
               return -1;
-            }
-            if (a.votes > b.votes) {
+            } else if (a.votes < b.votes && order === "desc") {
               return 1;
+            }
+            if (a.votes > b.votes && order === "asc") {
+              return 1;
+            } else if (a.votes > b.votes && order === "desc") {
+              return -1;
             }
             return 0;
           });
@@ -36,11 +39,15 @@ export default function Articles() {
 
         if (sortby === "comment_count") {
           articles.sort((a, b) => {
-            if (a.comment_count < b.comment_count) {
+            if (a.comment_count < b.comment_count && order === "asc") {
               return -1;
-            }
-            if (a.comment_count > b.comment_count) {
+            } else if (a.comment_count < b.comment_count && order === "desc") {
               return 1;
+            }
+            if (a.comment_count > b.comment_count && order === "asc") {
+              return 1;
+            } else if (a.comment_count > b.comment_count && order === "desc") {
+              return -1;
             }
             return 0;
           });
@@ -48,11 +55,15 @@ export default function Articles() {
 
         if (sortby === "created_at") {
           articles.sort((a, b) => {
-            if (a.created_at < b.created_at) {
+            if (a.created_at < b.created_at && order === "asc") {
               return -1;
-            }
-            if (a.created_at > b.created_at) {
+            } else if (a.created_at < b.created_at && order === "desc") {
               return 1;
+            }
+            if (a.created_at > b.created_at && order === "asc") {
+              return 1;
+            } else if (a.created_at > b.created_at && order === "desc") {
+              return -1;
             }
             return 0;
           });
