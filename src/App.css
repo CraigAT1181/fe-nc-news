@@ -1,10 +1,11 @@
 #root {
   max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
   justify-content: center;
   font-family: "Open Sans", cursive;
+  font-size: 1rem;
 }
 
 main {
@@ -21,11 +22,20 @@ form {
 }
 
 h2 {
-  margin-top: 0; 
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: rgb(31, 115, 143);
 }
 
 p {
-  margin: 2px;
+  margin: 0.2rem;
+}
+
+a {
+  margin: auto;
 }
 
 .logged-user {
@@ -35,7 +45,7 @@ p {
 }
 
 #profilepic {
-  width: 50px;
+  width: 4rem;
 }
 
 .search {
@@ -52,24 +62,34 @@ p {
 .article {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 32rem;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  margin: 30px;
-  padding: 1rem;
+  margin: 1rem;
+  padding: 2rem;
   text-align: left;
   border-radius: 20px;
 }
 
 .article-image {
-  padding-top: 20px;
-  width: 500px;
+  padding-top: 1rem;
+  width: 30rem;
+  height: 20rem;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+}
+
+#comment-link-div {
+  display: flex;
+  justify-content: center;
 }
 
 #comment-link {
-  margin-top: 50px;
+  margin-top: 2rem;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  width: 100px;
+  width: 6rem;
+  color: rgb(31, 115, 143);
+  background-color: white;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -78,56 +98,50 @@ p {
 }
 
 .single-article {
-  width: 50%;
-  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  border-radius: 20px;
-  padding: 100px;
-  padding-bottom: 40px;
-  margin-top: 50px;
+  width: 40rem;
+  padding: 5rem;
+  margin-top: 3rem;
 }
 
 .single-article-image {
-  width: 400px;
+  width: 20rem;
+  height: 20rem;
   margin: 1rem;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
 }
 
 .comments-display {
   display: flex;
   flex-direction: column;
   width: auto;
-
-  border-radius: 20px;
-  padding: 20px;
-  margin-top: 50px;
 }
 
 #comment-box {
-  
-  border-radius: 50px;
-  height: 75px;
-  
+  height: 4rem;
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  margin-bottom: 2rem;
 }
 
 #post-comment-button {
-width: 75px;
-border-radius: 20%;
-font-size: 20px;
-border: none;
-box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-cursor: pointer;
+  width: 5rem;
+  border-radius: 20%;
+  font-size: 1.2rem;
+  border: none;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  cursor: pointer;
+  color: rgb(31, 115, 143);
+  background-color: white;
 }
 
 #comment-input {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  width: 75%;
-  margin-right: 30px;
-  margin-left: 10px;
-  padding: 4%;
+  width: 30rem;
+  margin-right: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
 }
 
 .comment-card {
@@ -137,21 +151,23 @@ cursor: pointer;
   width: auto;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   border-radius: 20px;
-  margin: 5%;
+  margin: 1rem;
   padding: 1rem;
 }
 
 #delete-button {
-  width: 5rem;
+  width: 6rem;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   border-radius: 20px;
   border: none;
   align-self: flex-end;
   cursor: pointer;
+  color: rgb(31, 115, 143);
+  background-color: white;
 }
 
 #comment-text {
-  margin: 1%;
+  margin: 0.4rem;
 }
 
 #vote-count {
@@ -159,75 +175,72 @@ cursor: pointer;
   font-weight: bold;
 }
 
-#downvote {
-  margin-right: 20px;
+#downvote, #upvote {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: none;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   font-weight: bold;
-  height: 25px;
-  width: 25px;
+  height: 1.5rem;
+  width: 1.5rem;
   cursor: pointer;
-}
-
-#upvote {
-  margin-left: 20px;
-  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  font-weight: bold;
-  height: 25px;
-  width: 25px;
-  cursor: pointer;
-}
-
-.topic-display {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 50px;
-}
-
-.topic {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  margin: 30px;
-  padding: 1rem;
-  text-align: left;
-  border-radius: 20px;
+  color: rgb(31, 115, 143);;
 }
 
 .filter-display {
   display: flex;
   flex-direction: row;
   border-radius: 20px;
-  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
   width: 75%;
-  margin-top: 2rem;
+  
   justify-content: center;
-  margin-bottom: 2rem;
 }
 
 #topic-choice {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  color: rgb(31, 115, 143);
+  height: 1.2rem;
+  font-weight: bold;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 #sortby {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  color: rgb(31, 115, 143);
+  height: 1.2rem;
+  font-weight: bold;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 #order {
   border: none;
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+  color: rgb(31, 115, 143);
+  height: 1.2rem;
+  font-weight: bold;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 #topic-title {
   color: rgb(31, 115, 143);
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
-  padding: 1rem;
+  padding: 0.6rem;
+  padding-bottom: 1.2rem;
+  height: 1rem;
+  width: 5rem;
+  margin-top: 0rem;
 }
 
 .error-handling {
@@ -239,7 +252,7 @@ cursor: pointer;
 }
 
 #error-message {
-margin: 1rem;
+  margin: 1rem;
 }
 
 #error-button {

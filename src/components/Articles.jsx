@@ -211,7 +211,7 @@ export default function Articles() {
 
       {searchParams.get("topic") ? (
         <section>
-          <h1 id="topic-title">{topicTitle}</h1>
+          <h3 id="topic-title">{topicTitle}</h3>
         </section>
       ) : null}
 

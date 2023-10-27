@@ -69,11 +69,13 @@ export default function SingleArticle() {
           article_id={article.article_id}
           articleVotes={article.votes}
         />
+        <div id="comment-link-div">
         <p
           id="comment-link"
           onClick={handleCommentClick}>
           Comments
         </p>
+        </div>
 
         {showComments ? <Comments /> : null}
       </section>

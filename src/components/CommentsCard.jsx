@@ -20,7 +20,7 @@ export default function CommentCard({ comment, setCommentDeleted }) {
 
   return (
     <section className="comment-card">
-      <p id="comment-text">{comment.author}</p>
+      <h3 id="comment-text">{comment.author}</h3>
       <p id="comment-text">{comment.body}</p>
       <p id="comment-text">Votes: {comment.votes}</p>
       <p id="comment-text">

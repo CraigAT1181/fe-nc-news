@@ -81,7 +81,7 @@ export default function Comments() {
             type="text"
             required
           />
-          <button id="post-comment-button">post</button>
+          <button id="post-comment-button">Post</button>
         </form>
 
         {comments.length === 0
