@@ -10,8 +10,8 @@ export default function Articles() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   let [searchParams, setSearchParams] = useSearchParams();
-  const [sortby, setSortby] = useState();
-  // const [order, setOrder] = useState(searchParams.get("order") || "desc")
+  const [sortby, setSortby] = useState("created_at");
+  const [order, setOrder] = useState("desc");
 
   useEffect(() => {
     // setSearchParams({sortby: sortby, order: order})
@@ -21,6 +21,42 @@ export default function Articles() {
       .get(`/articles?${searchParams.toString()}`)
       .then(({ data: { articles } }) => {
         setIsLoading(false);
+
+        if (sortby === "votes") {
+          articles.sort((a, b) => {
+            if (a.votes < b.votes) {
+              return -1;
+            }
+            if (a.votes > b.votes) {
+              return 1;
+            }
+            return 0;
+          });
+        }
+
+        if (sortby === "comment_count") {
+          articles.sort((a, b) => {
+            if (a.comment_count < b.comment_count) {
+              return -1;
+            }
+            if (a.comment_count > b.comment_count) {
+              return 1;
+            }
+            return 0;
+          });
+        }
+
+        if (sortby === "created_at") {
+          articles.sort((a, b) => {
+            if (a.created_at < b.created_at) {
+              return -1;
+            }
+            if (a.created_at > b.created_at) {
+              return 1;
+            }
+            return 0;
+          });
+        }
 
         setArticles(articles);
       })
@@ -35,7 +71,7 @@ export default function Articles() {
           setError({ status, message: msg });
         }
       );
-  }, [searchParams, sortby]);
+  }, [searchParams, sortby, order]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -64,14 +100,19 @@ export default function Articles() {
     setIsLoading(true);
 
     setSearchParams(`topic=${e.target.value}`);
-    setTopicTitle(`${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(
-      1
-    )}`);
+    setTopicTitle(
+      `${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(1)}`
+    );
   }
 
   function handleSortby(e) {
     setSortby(e.target.value);
-    // searchParams.get("sortby")
+    // console.log(e.target.value);
+    // console.log(searchParams.get(sortby));
+  }
+
+  function handleOrder(e) {
+    setOrder(e.target.value);
     // console.log(e.target.value);
     // console.log(searchParams.get(sortby));
   }
@@ -117,7 +158,6 @@ export default function Articles() {
         <form onChange={handleSortby}>
           <label htmlFor="sortby"></label>
           <select
-            onChange={handleSortby}
             type="text"
             id="sortby"
             defaultValue="choose"
@@ -134,11 +174,32 @@ export default function Articles() {
             <option value="votes">Votes</option>
           </select>
         </form>
+
+        <form onChange={handleOrder}>
+          <label htmlFor="order"></label>
+          <select
+            type="text"
+            id="order"
+            defaultValue="choose"
+            required>
+            <option
+              key="placeholder"
+              value="choose"
+              disabled
+              hidden>
+              Order
+            </option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </form>
       </section>
 
-      <section>
-        <h1 id="topic-title">{topicTitle}</h1>
-      </section>
+      {searchParams.get("topic") ? (
+        <section>
+          <h1 id="topic-title">{topicTitle}</h1>
+        </section>
+      ) : null}
 
       <section className="article-display">
         {articles.map((article) => {

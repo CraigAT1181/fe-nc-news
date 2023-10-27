@@ -202,7 +202,7 @@ cursor: pointer;
   width: 75%;
   margin-top: 2rem;
   justify-content: center;
-  
+  margin-bottom: 2rem;
 }
 
 #topic-choice {
@@ -217,8 +217,13 @@ cursor: pointer;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
 }
 
+#order {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
+}
+
 #topic-title {
-  margin-top: 2rem;
   color: rgb(31, 115, 143);
   border-radius: 20px;
   box-shadow: 1px 1px 5px 1px rgb(31, 115, 143);
