@@ -1,14 +1,22 @@
+import { useState } from "react";
 import api from "../api/api";
 
-export default function CommentCard({ comment }) {
+export default function CommentCard({
+  comment,
+  commentPoster,
+  setCommentDeleted,
+}) {
+  const user = comment.author;
+  const commentID = comment.comment_id;
+  const poster = commentPoster;
 
-  function deleteComment (e) {
-    e.preventDefault()
-    setIsLoading(true)
+  function deleteComment(e) {
+    e.preventDefault();
 
-    // api.delete(`/articles/${article_id}/comments/${newComment.comment_id}`)
+    api.delete(`/comments/${commentID}`);
+
+    setCommentDeleted(true);
   }
-
 
   return (
     <section className="comment-card">
@@ -16,7 +24,14 @@ export default function CommentCard({ comment }) {
       <p id="comment-text">{comment.body}</p>
       <p id="comment-text">{comment.created_at}</p>
       <p id="comment-text">Votes: {comment.votes}</p>
-      <button onClick={deleteComment} id="delete-button">Delete</button>
+
+      {user === poster ? (
+        <button
+          onClick={deleteComment}
+          id="delete-button">
+          Delete
+        </button>
+      ) : null}
     </section>
   );
 }

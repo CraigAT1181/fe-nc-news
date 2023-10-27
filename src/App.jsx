@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Users from "./components/Users";
 import SingleArticle from "./components/SingleArticle";
 import Home from "./components/Home";
+import CommentCard from "./components/CommentsCard";
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
           <Route
             path="/articles/:article_id"
             element={<SingleArticle />}
+          />
+          <Route
+            path="/comments/:comment_id"
+            element={<CommentCard />}
           />
         </Routes>
       </main>
