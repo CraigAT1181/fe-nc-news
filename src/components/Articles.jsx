@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/api";
 import ArticleCard from "./ArticleCard";
 import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
@@ -96,12 +97,13 @@ export default function Articles() {
       .catch(
         ({
           response: {
-            data: { msg },
             status,
+            data: { message },
           },
         }) => {
           setIsLoading(false);
-          setError({ status, message: msg });
+
+          setError({ status, message: message });
         }
       );
   }, []);
@@ -127,9 +129,14 @@ export default function Articles() {
   if (isLoading) return <p>Just a moment...</p>;
   if (error)
     return (
-      <p>
-        Error {error.status} {error.message}
-      </p>
+      <section className="error-handling">
+        <p id="error-message">
+          Oops! We've not found what you were looking for...
+        </p>
+        <Link to={`/articles`}>
+          <button id="error-button">Return to Articles</button>
+        </Link>
+      </section>
     );
 
   return (
