@@ -1,19 +1,15 @@
-import { Link } from "react-router-dom";
 import LoggedUser from "./LoggedUser";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-
-  const linkStyle = {
-    textDecoration: "none",
-    color: "black",
-  };
 
   return (
     <header>
       <LoggedUser />
-      <h1>
-        <Link style={linkStyle} to={`/home`}>NC News</Link>
-      </h1>
+      <h1 id="title">NC News</h1>
+      <Link to={"/articles"}>
+      <button id="home">Home</button>
+      </Link>
     </header>
   );
 }
