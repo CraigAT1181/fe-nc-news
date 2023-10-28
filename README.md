@@ -40,12 +40,14 @@ This site serves up news articles, each of which can be accessed for more inform
 
 ## Running Locally
 
-### Clone
+Clone the repo from Github
 
 `git clone https://github.com/CraigAT1181/fe-nc-news.git`
 
-### Access fe-nc-news
-
-Locate the directory which you've clone it into, then use the following command to access it:
+Access the local repo cloned from Github
 
 `cd fe-nc-news`
+
+Run Vite and click the link to the localhost:5173
+
+`npm run dev`
