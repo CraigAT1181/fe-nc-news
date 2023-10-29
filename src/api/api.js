@@ -6,3 +6,14 @@ const api = axios.create({
 
 export default api;
 
+export const getArticles = async (queryString) => {
+  const { data } = await api.get(`/articles?${queryString}`);
+
+  return data;
+};
+
+export const getTopics = async () => {
+  const { data } = await api.get("/topics");
+
+  return data;
+};

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import { getArticles, getTopics } from "../api/api";
 import ArticleCard from "./ArticleCard";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -14,14 +14,14 @@ export default function Articles() {
   const [sortby, setSortby] = useState("created_at");
   const [order, setOrder] = useState("desc");
 
+  /* Get Articles */
+
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    api
-      .get(`/articles?${searchParams.toString()}`)
-      .then(({ data: { articles } }) => {
+    getArticles(searchParams.toString())
+      .then(({ articles }) => {
         setIsLoading(false);
-
         if (sortby === "votes") {
           articles.sort((a, b) => {
             if (a.votes < b.votes && order === "asc") {
@@ -69,28 +69,28 @@ export default function Articles() {
             return 0;
           });
         }
-
         setArticles(articles);
       })
       .catch(
         ({
           response: {
-            data: { msg },
             status,
+            data: { message },
           },
         }) => {
           setIsLoading(false);
-          setError({ status, message: msg });
+          setError({ status, message: message });
         }
       );
   }, [searchParams, sortby, order]);
 
+  /* Get Topics */
+
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    api
-      .get("/topics")
-      .then(({ data: { topics } }) => {
+    getTopics()
+      .then(({ topics }) => {
         setIsLoading(false);
         setTopics(topics);
       })
@@ -102,16 +102,16 @@ export default function Articles() {
           },
         }) => {
           setIsLoading(false);
-
           setError({ status, message: message });
         }
       );
   }, []);
 
+  /* Utility Functions */
+
   function handleTopics(e) {
     e.preventDefault();
     setIsLoading(true);
-
     setSearchParams(`topic=${e.target.value}`);
     setTopicTitle(
       `${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(1)}`
@@ -126,6 +126,8 @@ export default function Articles() {
     setOrder(e.target.value);
   }
 
+  /* Load & Error-handling */
+
   if (isLoading) return <p>Just a moment...</p>;
   if (error)
     return (
@@ -138,6 +140,8 @@ export default function Articles() {
         </Link>
       </section>
     );
+
+  /* Rendering */
 
   return (
     <>
