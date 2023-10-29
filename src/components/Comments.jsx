@@ -1,7 +1,7 @@
 import CommentsCard from "./CommentsCard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import api from "../api/api";
+import api, { getComments } from "../api/api";
 
 export default function Comments() {
   const { article_id } = useParams();
@@ -14,21 +14,21 @@ export default function Comments() {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    api
-      .get(`/articles/${article_id}/comments`)
-      .then(({ data: { comments } }) => {
+    getComments(article_id)
+      .then(({ comments }) => {
         setIsLoading(false);
         setComments(comments);
       })
       .catch(
         ({
           response: {
-            data: { msg },
             status,
+            data: { message },
           },
         }) => {
           setIsLoading(false);
-          setError({ status, message: msg });
+
+          setError({ status, message: message });
         }
       );
 

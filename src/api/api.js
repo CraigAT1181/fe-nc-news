@@ -23,3 +23,9 @@ export const getArticleByID = async (article_id) => {
 
   return data;
 };
+
+export const getComments = async (article_id) => {
+  const { data } = await api.get(`/articles/${article_id}/comments`);
+
+  return data;
+};
