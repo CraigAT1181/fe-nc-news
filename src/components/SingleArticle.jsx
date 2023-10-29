@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import api from "../api/api";
+import { getArticleByID } from "../api/api";
 import Comments from "./Comments";
 import Votes from "./Votes";
 import { Link } from "react-router-dom";
@@ -12,18 +12,14 @@ export default function SingleArticle() {
   const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
 
-  const handleCommentClick = () => {
-    showComments === true ? setShowComments(false) : setShowComments(true);
-  };
+  /* Get Article */
 
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    api
-      .get(`/articles/${article_id}`)
-      .then(({ data: { article } }) => {
+    getArticleByID(article_id)
+      .then(({ article }) => {
         setIsLoading(false);
-
         setArticle(article);
       })
       .catch(
@@ -40,6 +36,14 @@ export default function SingleArticle() {
       );
   }, []);
 
+  /* Utility Functions */
+
+  const handleCommentClick = () => {
+    showComments === true ? setShowComments(false) : setShowComments(true);
+  };
+
+  /* Load & Error-handling */
+
   if (isLoading) return <p>Loading...</p>;
   if (error)
     return (
@@ -52,6 +56,8 @@ export default function SingleArticle() {
         </Link>
       </section>
     );
+
+  /* Rendering */
 
   return (
     <>
@@ -70,11 +76,11 @@ export default function SingleArticle() {
           articleVotes={article.votes}
         />
         <div id="comment-link-div">
-        <p
-          id="comment-link"
-          onClick={handleCommentClick}>
-          Comments
-        </p>
+          <p
+            id="comment-link"
+            onClick={handleCommentClick}>
+            Comments
+          </p>
         </div>
 
         {showComments ? <Comments /> : null}

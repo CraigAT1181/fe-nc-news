@@ -17,3 +17,9 @@ export const getTopics = async () => {
 
   return data;
 };
+
+export const getArticleByID = async (article_id) => {
+  const { data } = await api.get(`/articles/${article_id}`);
+
+  return data;
+};
