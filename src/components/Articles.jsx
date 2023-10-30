@@ -70,6 +70,8 @@ export default function Articles() {
           });
         }
         setArticles(articles);
+        setOrder(order);
+        setSortby(sortby);
       })
       .catch(
         ({
@@ -185,7 +187,7 @@ export default function Articles() {
               value="choose"
               disabled
               hidden>
-              Sort By
+              {sortby}
             </option>
             <option value="created_at">Date</option>
             <option value="comment_count">Comments</option>
@@ -205,7 +207,7 @@ export default function Articles() {
               value="choose"
               disabled
               hidden>
-              Order
+              {order}
             </option>
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
