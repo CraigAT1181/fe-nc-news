@@ -12,7 +12,7 @@ export default function Articles() {
   const [error, setError] = useState(null);
   let [searchParams, setSearchParams] = useSearchParams();
   const [sortby, setSortby] = useState("created_at");
-  const [order, setOrder] = useState("desc");
+  const [order, setOrder] = useState("Desc");
 
   /* Get Articles */
 
@@ -24,14 +24,14 @@ export default function Articles() {
         setIsLoading(false);
         if (sortby === "votes") {
           articles.sort((a, b) => {
-            if (a.votes < b.votes && order === "asc") {
+            if (a.votes < b.votes && order === "Asc") {
               return -1;
-            } else if (a.votes < b.votes && order === "desc") {
+            } else if (a.votes < b.votes && order === "Desc") {
               return 1;
             }
-            if (a.votes > b.votes && order === "asc") {
+            if (a.votes > b.votes && order === "Asc") {
               return 1;
-            } else if (a.votes > b.votes && order === "desc") {
+            } else if (a.votes > b.votes && order === "Desc") {
               return -1;
             }
             return 0;
@@ -40,14 +40,14 @@ export default function Articles() {
 
         if (sortby === "comment_count") {
           articles.sort((a, b) => {
-            if (a.comment_count < b.comment_count && order === "asc") {
+            if (a.comment_count < b.comment_count && order === "Asc") {
               return -1;
-            } else if (a.comment_count < b.comment_count && order === "desc") {
+            } else if (a.comment_count < b.comment_count && order === "Desc") {
               return 1;
             }
-            if (a.comment_count > b.comment_count && order === "asc") {
+            if (a.comment_count > b.comment_count && order === "Asc") {
               return 1;
-            } else if (a.comment_count > b.comment_count && order === "desc") {
+            } else if (a.comment_count > b.comment_count && order === "Desc") {
               return -1;
             }
             return 0;
@@ -56,14 +56,14 @@ export default function Articles() {
 
         if (sortby === "created_at") {
           articles.sort((a, b) => {
-            if (a.created_at < b.created_at && order === "asc") {
+            if (a.created_at < b.created_at && order === "Asc") {
               return -1;
-            } else if (a.created_at < b.created_at && order === "desc") {
+            } else if (a.created_at < b.created_at && order === "Desc") {
               return 1;
             }
-            if (a.created_at > b.created_at && order === "asc") {
+            if (a.created_at > b.created_at && order === "Asc") {
               return 1;
-            } else if (a.created_at > b.created_at && order === "desc") {
+            } else if (a.created_at > b.created_at && order === "Desc") {
               return -1;
             }
             return 0;
@@ -206,8 +206,8 @@ export default function Articles() {
               hidden>
               {order}
             </option>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
+            <option value="Asc">Ascending</option>
+            <option value="Desc">Descending</option>
           </select>
         </form>
       </section>
