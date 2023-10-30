@@ -109,25 +109,6 @@ export default function Articles() {
       );
   }, []);
 
-  /* Utility Functions */
-
-  function handleTopics(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    setSearchParams(`topic=${e.target.value}`);
-    setTopicTitle(
-      `${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(1)}`
-    );
-  }
-
-  function handleSortby(e) {
-    setSortby(e.target.value);
-  }
-
-  function handleOrder(e) {
-    setOrder(e.target.value);
-  }
-
   /* Load & Error-handling */
 
   if (isLoading) return <p>Just a moment...</p>;
@@ -148,7 +129,17 @@ export default function Articles() {
   return (
     <>
       <section className="filter-display">
-        <form onChange={handleTopics}>
+        <form
+          onChange={(e) => {
+            e.preventDefault();
+            setIsLoading(true);
+            setSearchParams(`topic=${e.target.value}`);
+            setTopicTitle(
+              `${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(
+                1
+              )}`
+            );
+          }}>
           <select
             type="text"
             id="topic-choice"
@@ -175,7 +166,10 @@ export default function Articles() {
           </select>
         </form>
 
-        <form onChange={handleSortby}>
+        <form
+          onChange={(e) => {
+            setSortby(e.target.value);
+          }}>
           <label htmlFor="sortby"></label>
           <select
             type="text"
@@ -195,7 +189,10 @@ export default function Articles() {
           </select>
         </form>
 
-        <form onChange={handleOrder}>
+        <form
+          onChange={(e) => {
+            setOrder(e.target.value);
+          }}>
           <label htmlFor="order"></label>
           <select
             type="text"
