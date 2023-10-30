@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { getArticles, getTopics } from "../api/api";
 import ArticleCard from "./ArticleCard";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
-  const [topicTitle, setTopicTitle] = useState([]);
+  const [topicTitle, setTopicTitle] = useState("All Topics");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   let [searchParams, setSearchParams] = useSearchParams();
   const [sortby, setSortby] = useState("created_at");
   const [order, setOrder] = useState("Desc");
+
+  const navigate = useNavigate();
 
   /* Get Articles */
 
@@ -133,7 +135,7 @@ export default function Articles() {
           onChange={(e) => {
             e.preventDefault();
             setIsLoading(true);
-            setSearchParams(`topic=${e.target.value}`);
+            e.target.value === "all" ? navigate("/articles") : setSearchParams(`topic=${e.target.value}`);
             setTopicTitle(
               `${e.target.value.charAt(0).toUpperCase()}${e.target.value.slice(
                 1
@@ -150,11 +152,13 @@ export default function Articles() {
               value="choose"
               disabled
               hidden>
-              Filter Topic
+              {topicTitle}
             </option>
+            <option value="all">All Topics</option>
             {topics.sort().map((topic) => {
               return (
                 <option
+                className="topic-options"
                   key={topic.slug}
                   value={topic.slug}>
                   {`${topic.slug.charAt(0).toUpperCase()}${topic.slug.slice(
@@ -181,7 +185,9 @@ export default function Articles() {
               value="choose"
               disabled
               hidden>
-              {sortby}
+              {sortby === "created_at" ? "Date" : null}
+              {sortby === "comment_count" ? "Comments" : null}
+              {sortby === "votes" ? "Votes" : null}
             </option>
             <option value="created_at">Date</option>
             <option value="comment_count">Comments</option>
@@ -211,12 +217,6 @@ export default function Articles() {
           </select>
         </form>
       </section>
-
-      {searchParams.get("topic") ? (
-        <section>
-          <h3 id="topic-title">{topicTitle}</h3>
-        </section>
-      ) : null}
 
       <section className="article-display">
         {articles.map((article) => {
